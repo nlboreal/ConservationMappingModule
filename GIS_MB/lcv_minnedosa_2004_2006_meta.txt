@@ -1,0 +1,326 @@
+Identification_Information:
+	Citation:
+		Citation_Information:
+			Originator: Manitoba Conservation Department, Manitoba Remote Sensing Centre(comp.)
+			Publication_Date: 2006 July 25/Aug 15 - Minnedosa
+			Publication_Time: Unknown
+			Title: Land Use/ Land Cover Landsat TM Maps
+			Edition: Minnedosa 2006
+			Geospatial_Data_Presentation_Form: map
+			Series_Information:
+			Publication_Information:
+				Publication_Place: Winnipeg, Manitoba
+				Publisher: Manitoba Remote Sensing Centre
+			Larger_Work_Citation:
+				Citation_Information:
+					Series_Information:
+					Publication_Information:
+	Description:
+		Abstract:
+			This dataset contains coverage of various
+			size, depicting land use / land cover features, which were
+			compiled based on Landsat Thematic Mapper (TM)
+			imagery. The pixel resolution of this data is 30 meters.
+			Upon classification, sixteen land classes are mapped,
+			these being agricultural crop land, forage crops, grassland,
+			open deciduous, deciduous, coniferous, mixedwood
+			forests,treed rock, bogs, marshes and fens, bare rock,
+			burnt areas, forest cutovers, open water, cultural features,
+			roads and trails.
+		Purpose:
+			To display land use / land cover features used by earth
+			resources management agencies and for environmental
+			monitoring.
+		Supplemental_Information:
+			Land Use/Land Cover Mapping of Manitoba
+			1. Agricultural Cropland; All lands dedicated to the
+			production of annual cereal, oil seed and other speciality
+			crops. This class can be further sub-divided into three crop
+			0% - 33%, 34% - 66%, and 67% - 100%.
+			2. Deciduous Forest;75% - 100% of the forest canopy is
+			deciduous. Dominant species include trembling aspen
+			(Populus tremuloides), balsam poplar (Populus balsamifera),
+			and white birch (Betula papyrifera). May include small
+			patches of grassland, marsh or fens less than two
+			hectares in size.
+			3. Water Bodies; All open water - lakes, rivers, streams,
+			ponds and lagoons.
+			4. Grassland/Rangeland; Mixed native and/or tame prairie
+			grasses and herbs. May also include scattered stands of
+			willow (Salix L.), choke cherry (Prunus virginiana), pin
+			cherry (Prunus pensylvanica) and saskatoon (Amelanchier
+			alnifolia). Many of these areas are used for cutting of hay
+			and grazing. Both upland and lowland meadows fall into
+			this class. There is normally less than 10% shrub or tree
+			cover.
+			5. Mixedwood Forest; 25% - 75% of the canopy is
+			coniferous. May include patches of treed bog, marsh or
+			fens less than two hectares in size.
+			6. Marsh and Fens; Wet areas with standing or slowly
+			moving water. Vegetation consists of grasses and/or
+			sedge. Marshes will include common hydrophytic
+			vegetation such as cattail and rushes. Fens will be formed
+			on minerotrophic sites. Areas are frequently interspersed
+			with channels or pools of open water.
+			7. Treed and Open Bogs; Peat covered or peat filled
+			depressions with a high water table. The bogs are covered
+			with a carpet of Spagnum spp. and ericaceous shrubs and
+			may be treeless or treed with black spruce (Picea mariana)
+			and/or tamarack (Larix laricina).
+			8. Treed Rock; Exposed bedrock with less than 50% tree
+			cover.
+			9. Coniferous Forest;  75% - 100% of the canopy are
+			coniferous. Pine (Pinus spp.) and spruce (Picea spp.) are
+			dominant species. May include patches of treed bog,
+			marsh or fens less than two hectares in size.
+			10. Burnt Areas; Burned forested areas with sporadic
+			regeneration and can include patches of unburnt trees.
+			11. Open Deciduous; Lands characterized by rough
+			topography, shallow soil, or poor drainage. Supports a
+			growth of shrubs such as willow (Salix spp.), alder (Alnus
+			spp.) saskatoon (Amalanchier spp.) and/or stunted
+			deciduous (Populus spp.) tree cover. An area could have
+			up to 50% scattered tree or shrub cover.
+			12. Forage Crops; Consists of perennial forage such as
+			alflafa, and clover or blends of these with tame species of
+			grass. Fall seeded crops such as winter wheat or fall rye
+			are included here.
+			13. Cultural Features; Built-up areas such as cities and
+			towns, peat farms, golf courses, cemeteries, shopping
+			centres, large recreation sites, auto wreck yards, airports,
+			cottage areas, race tracks.
+			14. Forest Cutover; Areas where commercial logging
+			operations have clearcut or partially removed a standing
+			forest. Includes areas which have been recently replanted.
+			15. Bare Rock, Gravel and Sand; Exposed areas of
+			bedrock, sand dunes, and beaches, gravel quarry/pit
+			operations, mine tailings, borrow pits, and rock quarries.
+			16. Roads and Trails; All highways, secondary roads, trails,
+			cut survey lines, right-of-ways, railway lines and
+			transmission lines.
+	Time_Period_of_Content:
+		Time_Period_Information:
+			Single_Date/Time:
+				Calendar_Date: 2006 July 24/Aug 15
+			Range_of_Dates/Times:
+			Multiple_Dates/Times:
+		Currentness_Reference: Publication Date
+	Status:
+		Progress: Complete
+		Maintenance_and_Update_Frequency: As needed
+	Spatial_Domain:
+		Bounding_Coordinates:
+			West_Bounding_Coordinate: -99.999237
+			East_Bounding_Coordinate: -98.30228
+			North_Bounding_Coordinate: +51.058987
+			South_Bounding_Coordinate: +50.028651
+	Keywords:
+		Theme:
+			Theme_Keyword_Thesaurus: None
+			Theme_Keyword: Land Use
+			Theme_Keyword: Land Cover
+			Theme_Keyword: Landsat Thematic Mapper (TM)
+			Theme_Keyword: Satellite Imagery
+			Theme_Keyword: Land Classification
+			Theme_Keyword: remote sensing
+			Theme_Keyword_Thesaurus: Tri - Service Spatial Data Standard
+			Theme_Keyword: Land Status
+		Place:
+			Place_Keyword_Thesaurus: None
+			Place_Keyword: Manitoba
+			Place_Keyword: McCreary
+			Place_Keyword: Neepawa
+			Place_Keyword: Minnedosa
+			Place_Keyword: Jackfish Lake
+			Place_Keyword: Riding Mountain National Park
+			Place_Keyword: Gladstone
+			Place_Keyword: Lake Manitoba
+			Place_Keyword: R.M. of Ochre River
+			Place_Keyword: R.M. of Ste. Rose
+			Place_Keyword: R.M. of Alonsa
+			Place_Keyword: R.M. of McCreary
+			Place_Keyword: R.M. of Clanwilliam
+			Place_Keyword: R.M. of Rosedale
+			Place_Keyword: R.M. of Glenella
+			Place_Keyword: R.M. of Lakeview
+			Place_Keyword: R.M. of Westbourne
+			Place_Keyword: R.M. of Langford
+			Place_Keyword: R.M. of Lansdowne
+			Place_Keyword: R.M. of Odanah
+		Stratum:
+		Temporal:
+	Access_Constraints: None
+	Use_Constraints:
+		The data represent the results of data collection /
+		processing for a specific activity and indicates the general
+		existing conditions. As such, it is only valid for its intended
+		use, content, time, and accuracy specifications. The user
+		is responsible for the results of any application of the data
+		for other than its intended purpose.
+	Point_of_Contact:
+		Contact_Information:
+			Contact_Person_Primary:
+			Contact_Organization_Primary:
+				Contact_Organization: Manitoba Conservation Department, Remote  Sensing Centre
+				Contact_Person: Gerry Lux
+			Contact_Position: Chief, Manitoba Remote Sensing Centre
+			Contact_Address:
+				Address_Type: mailing and physical address
+				Address: 1007 Century Street
+				City: Winnipeg
+				State_or_Province: Manitoba
+				Postal_Code: R3H 0W4
+				Country: Canada
+			Contact_Voice_Telephone: (204) 945-6594
+			Contact_Facsimile_Telephone: (204) 945-1365
+			Contact_Electronic_Mail_Address: Gerry.lux@gov.mb.ca
+			Hours_of_Service: 0800 - 1630
+	Security_Information:
+	Native_Data_Set_Environment:
+		Data Structure is Raster, 30 meter pixel resolution.
+		Data Format is TIFF, DIPIX ARIES, LGSOWG, or PIX.
+		Operating System is Windows NT.
+	Cross_Reference:
+		Citation_Information:
+			Series_Information:
+			Publication_Information:
+Data_Quality_Information:
+	Attribute_Accuracy:
+	Positional_Accuracy:
+		Horizontal_Positional_Accuracy:
+			Quantitative_Horizontal_Positional_Accuracy_Assessment:
+				Horizontal_Positional_Accuracy_Value: 30 metres
+		Vertical_Positional_Accuracy:
+			Quantitative_Vertical_Positional_Accuracy_Assessment:
+				Vertical_Positional_Accuracy_Value: 30 metres
+	Lineage:
+		Source_Information:
+			Source_Citation:
+				Citation_Information:
+					Series_Information:
+					Publication_Information:
+					Larger_Work_Citation:
+						Citation_Information:
+							Series_Information:
+							Publication_Information:
+			Source_Time_Period_of_Content:
+				Time_Period_Information:
+					Single_Date/Time:
+					Range_of_Dates/Times:
+					Multiple_Dates/Times:
+				Source_Currentness_Reference: Publication Date
+		Process_Step:
+			Process_Contact:
+				Contact_Information:
+					Contact_Person_Primary:
+					Contact_Organization_Primary:
+					Contact_Address:
+	Cloud_Cover: less than 5 percent cloud cover
+Spatial_Data_Organization_Information:
+	Direct_Spatial_Reference_Method: Raster
+	Raster_Object_Information:
+		Raster_Object_Type: Pixel
+		Row_Count: 3827
+		Column_Count: 4000
+	Spatial_Reference_Information:
+		Horizontal_Coordinate_System_Definition:
+			Planar:
+				Grid_Coordinate_System:
+					Grid_Coordinate_System_Name: Universal Transverse Mercator
+					Universal_Transverse_Mercator:
+						UTM_Zone_Number: zone 14
+						Transverse_Mercator:
+							Scale_Factor_at_Central_Meridian: .999600
+							Longitude_of_Central_Meridian: +099.000000
+							Latitude_of_Projection_Origin: +50.000000
+							False_Easting: 50000.00
+							False_Northing: 0.00
+					Universal_Polar_Stereographic:
+						Polar_Stereographic:
+					State_Plane_Coordinate_System:
+						Lambert_Conformal_Conic:
+						Transverse_Mercator:
+						Oblique_Mercator:
+							Oblique_Line_Point:
+						Polyconic:
+					ARC_Coordinate_System:
+						Equirectangular:
+						Azimuthal_Equidistant:
+				Planar_Coordinate_Information:
+					Planar_Coordinate_Encoding_Method: row and column
+					Coordinate_Representation:
+						Abscissa_Resolution: 30.00 metre
+						Ordinate_Resolution: 30.00
+					Distance_and_Bearing_Representation:
+					Planar_Distance_Units: Meters
+			Geodetic_Model:
+				Horizontal_Datum_Name: North American Datum of 1983
+				Ellipsoid_Name: Geodetic Reference System 80
+				Semi-major_Axis: 6378137.00
+				Denominator_of_Flattening_Ratio: Unknown
+		Vertical_Coordinate_System_Definition:
+			Altitude_System_Definition:
+			Depth_System_Definition:
+				Depth_Distance_Units: Meters
+Entity_and_Attribute_Information:
+	Detailed_Description:
+		Entity_Type:
+		Attribute:
+			Attribute_Domain_Values:
+			Attribute_Value_Accuracy_Information:
+	Overview_Description:
+Distribution_Information:
+	Distributor:
+		Contact_Information:
+			Contact_Person_Primary:
+			Contact_Organization_Primary:
+				Contact_Organization: Manitoba Government
+			Contact_Address:
+				Address_Type: mailing and physical address
+	Distribution_Liability:
+		The data represent the results of data collection /
+		processing for a specific activity and indicates the general
+		existing conditions. As such, it is only valid for its intended
+		use, content, time, and accuracy specifications. The user
+		is responsible for the results of any application of the data
+		for other than its intended purpose.
+	Standard_Order_Process:
+		Digital_Form:
+			Digital_Transfer_Information:
+			Digital_Transfer_Option:
+				Online_Option:
+					Computer_Contact_Information:
+						Network_Address:
+						Dialup_Instructions:
+				OffLine_Option:
+					Recording_Capacity:
+	Available_Time_Period:
+		Time_Period_Information:
+			Single_Date/Time:
+			Range_of_Dates/Times:
+			Multiple_Dates/Times:
+Metadata_Reference_Information:
+	Metadata_Date: 2006/July/August
+	Metadata_Contact:
+		Contact_Information:
+			Contact_Person_Primary:
+			Contact_Organization_Primary:
+				Contact_Organization: Manitoba Conservation Department, Remote Sensing Centre
+				Contact_Person: Gerry Lux
+			Contact_Position: Chief, Manitoba Remote Sensing Centre
+			Contact_Address:
+				Address_Type: mailing and physical address
+				Address: 1007 Century Street
+				City: Winnipeg
+				State_or_Province: Manitoba
+				Postal_Code: R3H 0W4
+				Country: Canada
+			Contact_Voice_Telephone: (204) 945-6594
+			Contact_Facsimile_Telephone: (204) 945-1365
+			Contact_Electronic_Mail_Address: gerry.lux@gov.mb.ca
+	Metadata_Standard_Name: FGDC Content Standards for Digital Geospatial Metadata
+	Metadata_Standard_Version: 
+	Metadata_Time_Convention: Local time
+	Metadata_Access_Constraints: None
+	Metadata_Use_Constraints: None
+	Metadata_Security_Information:

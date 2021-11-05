@@ -1,0 +1,26 @@
+#Downlaoding Data {#Downloading}
+
+Review the Overview of [Types of GIS Data](https://nlboreal.github.io/ConservationGIS/whatIs.html) from the Conservation GIS manual.
+
+In this part we will be working with Vector data from the Government of Manitoba. These are available via the [Manitoba Land Initiative](https://mli2.gov.mb.ca/). You should start by exploring this page. Click on the "Download digital maps" icon to review the [Licence Agreement](https://mli2.gov.mb.ca/app/register/app/index.php).
+
+1. Click on the Maniobal Land Initiative link above, and review the data license agreement. Once you agree, you will land on a page, with categories of data on the left. You will download the items listed below to your own folder. Download these to the same folder you will be working from in RStudio.
+
+**IMPORTANT** files will be downloaded as .zip files! You can extract these using Windows Explorer (on a PC) or WinZip software (if you have it). If you are using a Mac, double click the .zip file to unzip it. Make sure the unzipped files get extracted to your working folder!
+
+
+1. Under the "Base Maps" menu, download and extract the .shp file for the 1:2,000,000 base map.
+
+
+We will get the remaining layers we need via the ESRI Online interface.
+
+1. Login to ESRI online and search for layers by typiing in the search bar at the top of the screen. Make sure the toggle switch for "Only search in Memorial University" is set to "off".
+
+Search for and download each of these files: 
+
+[Manitoba Provincial Boundary](https://mun.maps.arcgis.com/home/item.html?id=ed39fb5989bc41bcb4b102f8ea899abf)
+[Manitoba Parks](https://mun.maps.arcgis.com/home/item.html?id=0b8e5b5280904fa4aeba7baf78154e59)
+[Aboriginal Land Types in Canada](https://mun.maps.arcgis.com/home/item.html?id=be58540e15a643eb95b440d70285703d)
+
+1. Finally, search within Memorial University for a shapefile called "RMNP", which was created by me. Download this file to the same folder as the other GIS layers.
+
