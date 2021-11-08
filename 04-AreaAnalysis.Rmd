@@ -1,11 +1,8 @@
 # Area Analysis (#AreaAnalysis)
 
-```{r echo = FALSE}
-```
-
 Spatial analysis is much more than making maps, so in this chapter we will investigate how to harness the data underlying these maps to answer some questions.
 
-Each shapefile has an associated attribute database file. You can see what the data look like by typing ```head(<datalayername>)```. This will give you the spatial refernce data and the attribute data.
+Each shapefile has an associated attribute database file. You can see what the data look like by typing ```head(<datalayername>)```. This will give you the spatial reference data and the attribute data.
 
 **TRY IT!!** Type ```head(MB_Parks)``` and note the spatial referencing and attribute data. One of the headers is ```0_AREA```, which gives the area of the park in hectares. The RMNP has area data stored in the ```AnalysisAr``` field.
 
@@ -17,13 +14,13 @@ First, we add up the park area and the area of RMNP (we will exclude the other n
 total_park_area <- MB_RMNP$AnalysisAr + sum(MB_parks$O_AREA/100)
 ```
 
-NOte we divide the area of the parks by 100 since it is reported in hectares and we want square kilometers.
+Note we divide the area of the parks by 100 since it is reported in hectares and we want square kilometers.
 
-The Indigenous land layer does not have an area field, so it has to be calculated based on the CRS (co-ordinate reference system) using the ```st_area``` function. Because the CRS is in UTMs, area will be in square metres. Thus we need to divede to get to areas in square km. Use the code below and note the use of the "pipes" (```%>%``` symbol) which require the ```dplyr``` package (you can review the ```dplyr``` pacakge in the lab manual for BIOL 1002, available [here(https://ahurford.github.io/biol-1002/index.html)]).
+The Indigenous land layer does not have an area field, so it has to be calculated based on the CRS (co-ordinate reference system) using the ```st_area``` function. Because the CRS is in UTMs, area will be in square metres. Thus we need to divide to get to areas in square km. Use the code below and note the use of the "pipes" (```%>%``` symbol) which require the ```dplyr``` package (you can review the ```dplyr``` pacakge in the lab manual for BIOL 1002, available [here(https://ahurford.github.io/biol-1002/index.html)]).
 
 ```{r}
-MB_Indigenous_areas <- MB_Indigenous_lands %>%
-  mutate(area_sqm = st_area(MB_Indigenous_lands)) %>%
+MB_Indigenous_areas <- MB_IndigenousLands %>%
+  mutate(area_sqm = st_area(MB_IndigenousLands)) %>%
   mutate(area_sqkm = area_sqm/1000000)
 ```
 

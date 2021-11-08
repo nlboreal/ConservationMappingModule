@@ -3,14 +3,14 @@
 We will use the R package ```sf``` for handling vector data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
 
 ```{r}
-install.packages("sf")
+install.packages("sf", repos = "http://cran.us.r-projct.org")
 library(sf) 
 ```
 
 To plot the data (i.e., make a map) we will also need the package ```ggplot2```, so make sure to load and install that as well.
 
 ```{r}
-install.packages("ggplot2")
+install.packages("ggplot2", repos = "http://cran.us.r-projct.org")
 library(ggplot2)
 ```
 
@@ -18,20 +18,21 @@ library(ggplot2)
 Set your working directory to the spot where you downloaded the data in \@ref(Downloading). If you do not remember how to check, and set your working directory, review section [4.2](https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory).
 
 ```{r}
-setwd("C:/Users/ywiersma/Documents/BIOL4651/MappingModule/ConservationMapplingModule/GIS_MB")
+setwd("C:/Users/ywiersma/Documents/BIOL4651/MappingModule/ConservationMappingModule")
 ```
 
 Then read in the shapefile for the boundary outline of the province of Manitoba, the provincial parks layer and the Aboriginal lands layer as follows:
 
 ```{r}
-MB_outline <- st_read("Manitoba_Provincial_Boundary.shp")
-MB_parks <-st_read("Manitoba_Parks.shp")
-IndigenousLands <- st_read("Aboriginal_Lands.shp")
+MB_outline <- st_read("GIS_MB/Manitoba_Provincial_Boundary.shp")
+MB_parks <-st_read("GIS_MB/Manitoba_Parks.shp")
 ```
 
-Create a map of the province of Manitoba boundary and the Indigenous lands layers using ggplot
+```IndigenousLands <- st_read("Aboriginal_Lands.shp")```
 
-```{r}
+Create a map of the province of Manitoba boundary and the Indigenous lands layers using ggplot using the code snippet below:
+
+```
 ggplot() +
   geom_sf(data = MB_outline) + 
   geom_sf(data = IndigenousLands)
@@ -39,11 +40,16 @@ ggplot() +
 
 Notice that the Indigenous Lands layer is for all of Canada. To clip this to just include those within the province of Manitoba, execute this code:
 
-```{r}
+```
 MB_IndigenousLands <- IndigenousLands[MB_outline, ]
 ```
 
 If you substitute the new layer "MB_IndigenousLands" in the ggplot code snippet you used above, you will only see the lands that are within the provincial boundaries of Manitoba, and your map should look like this: 
+
+```{r echo = FALSE} 
+MB_IndigenousLands <- st_read("GIS_MB/MB_IndigenousLands.shp")
+```
+
 
 ```{r echo = FALSE}
 ggplot() +
@@ -63,7 +69,7 @@ ggplot() +
 Now, try reading in and adding the layer for railways, using the code below:
 
 ```{r error = FALSE}
-MB_rail <- st_read("rail.shp")
+MB_rail <- st_read("GIS_MB/rail.shp")
   
 ggplot() +
   geom_sf(data = MB_outline) + 
@@ -80,9 +86,9 @@ Verify that the MB_rail layer has no crs with the following code:
 st_crs(MB_rail)
 ```
 
-Now use the same ```st_crs``` function to check the CRS for the MB_outline layer. Notice the code right at the IDend of the output. It is 26914, which is the reference code for that file's projection (which is in NAD 83, UTM Zone 14N).
+Now use the same ```st_crs``` function to check the CRS for the MB_parks layer. Notice the code right at the IDend of the output. It is 26914, which is the reference code for that file's projection (which is in NAD 83, UTM Zone 14N).
 
-To assign the existing projection system for MB_outline to the MB_rail layer, execute the following code:
+To assign the existing projection system for MB_parks to the MB_rail layer, execute the following code:
 
 ```{r}
 MB_rail <- st_set_crs(MB_rail, 26914)
@@ -103,7 +109,7 @@ This is starting to look like all the pieces are coming together, but it is hard
 Details on how to change symbols can be viewed with this command: 
 ```vignette("ggplot2-specs")```
 
-An example to make the Indigneous lands yellow and the rail line a brown dashed line is below:
+An example to make the Indigenous lands yellow and the rail line a brown dashed line is below:
 
 ```{r}
 ggplot() +
@@ -124,7 +130,14 @@ Roads layer - red
 Water layer - blue
 
 ```{r echo = FALSE}
-MB_water <- st_set_crs(MB_water, 26914)
+#MB_water <- st_read("GIS_MB/water.shp")
+#MB_water <- st_set_crs(MB_water, 26914)
+
+#MB_roads <- st_read("GIS_MB/roads.shp")
+#MB_roads <- st_set_crs(MB_roads, 26914)
+
+#MB_RMNP <- st_read("GIS_MB/RMNP.shp")
+#MB_RMNP2 <- st_transform(MB_RMNP, 26914)
 
 ggplot() +
   geom_sf(data = MB_outline) + 
@@ -132,8 +145,8 @@ ggplot() +
   geom_sf(data = MB_rail, lty = "dashed", col = "brown") +
   geom_sf(data = MB_water, col = "blue") +
   geom_sf(data = MB_roads, col = "red") + 
-  geom_sf(data = MB_Indigenous_lands, fill = "yellow") + 
-  geom_sf(data = MB_RMNP, fill = "pink")
+  geom_sf(data = MB_IndigenousLands, fill = "yellow") + 
+  geom_sf(data = MB_RMNP2, fill = "pink")
 ```
 
 In the next chapter, we will explore how we can use the data underlying this map to do \@ref(AreaAnalysis).

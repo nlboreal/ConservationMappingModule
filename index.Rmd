@@ -3,17 +3,9 @@ title: "Mapping Module for Conservation Biology II (BIOL 4651/7944)"
 author: "Yolanda Wiersma"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: bookdown::gitbook #bookdown::html_document2
 documentclass: book
+link-citations: false
 git-hub-repo: nlboreal/ConservationMappingModule
-bibliography: [book.bib, packages.bib]
-biblio-style: apalike
-link-citations: yes
 description: "This is a set of instructions for a mapping module in the BIOL 4651/7944 Conservation in Practice Course"
-
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
+---

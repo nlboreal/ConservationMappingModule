@@ -1,0 +1,289 @@
+--- 
+title: "Mapping Module for Conservation Biology II (BIOL 4651/7944)"
+author: "Yolanda Wiersma"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook #bookdown::html_document2
+documentclass: book
+link-citations: false
+git-hub-repo: nlboreal/ConservationMappingModule
+description: "This is a set of instructions for a mapping module in the BIOL 4651/7944 Conservation in Practice Course"
+---
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction {#intro}
+
+This is a module for the Winter 2022 offering of BIOL 4651/7794 (Conservation Biology- Conservation in Practice).
+
+Further resources and hints for completing the exercise can be found in the Conservation GIS manual, available [here](https://nlboreal.github.io/ConservationGIS/).
+
+If you are not familar with R, it is recommended that you read through the MUN Biology R manual, which is available online [here](https://ahurford.github.io/quant-guide-all-courses/), paying special attention to chapters 1-9.
+
+
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+
+
+<!--chapter:end:01-intro.Rmd-->
+
+#Downlaoding Data {#Downloading}
+
+Review the Overview of [Types of GIS Data](https://nlboreal.github.io/ConservationGIS/whatIs.html) from the Conservation GIS manual.
+
+In this part we will be working with Vector data from the Government of Manitoba. These are available via the [Manitoba Land Initiative](https://mli2.gov.mb.ca/). You should start by exploring this page. Click on the "Download digital maps" icon to review the [Licence Agreement](https://mli2.gov.mb.ca/app/register/app/index.php).
+
+1. Click on the Manitoba Land Initiative link above, and review the data license agreement. Once you agree, you will land on a page, with categories of data on the left. You will download the items listed below to your own folder. Download these to the same folder you will be working from in RStudio.
+
+**IMPORTANT** files will be downloaded as .zip files! You can extract these using Windows Explorer (on a PC) or WinZip software (if you have it). If you are using a Mac, double click the .zip file to unzip it. Make sure the unzipped files get extracted to your working folder!
+
+
+1. Under the "Base Maps" menu, download and extract the .shp file for the 1:2,000,000 base map.
+
+
+We will get the remaining layers we need via the ESRI Online interface.
+
+1. Login to ESRI online and search for layers by typiing in the search bar at the top of the screen. Make sure the toggle switch for "Only search in Memorial University" is set to "off".
+
+Search for and download each of these files: 
+
+[Manitoba Provincial Boundary](https://mun.maps.arcgis.com/home/item.html?id=ed39fb5989bc41bcb4b102f8ea899abf)
+[Manitoba Parks](https://mun.maps.arcgis.com/home/item.html?id=0b8e5b5280904fa4aeba7baf78154e59)
+[Aboriginal Land Types in Canada](https://mun.maps.arcgis.com/home/item.html?id=be58540e15a643eb95b440d70285703d)
+
+1. Finally, search within Memorial University for a shapefile called "RMNP", which was created by me. Download this file to the same folder as the other GIS layers.
+
+
+<!--chapter:end:02-DataDownload.Rmd-->
+
+# Working with Vector Data {#Vectors}
+
+We will use the R package ```sf``` for handling vector data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
+
+```{r}
+install.packages("sf", repos = "http://cran.us.r-projct.org")
+library(sf) 
+```
+
+To plot the data (i.e., make a map) we will also need the package ```ggplot2```, so make sure to load and install that as well.
+
+```{r}
+install.packages("ggplot2", repos = "http://cran.us.r-projct.org")
+library(ggplot2)
+```
+
+
+Set your working directory to the spot where you downloaded the data in \@ref(Downloading). If you do not remember how to check, and set your working directory, review section [4.2](https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory).
+
+```{r}
+setwd("C:/Users/ywiersma/Documents/BIOL4651/MappingModule/ConservationMappingModule")
+```
+
+Then read in the shapefile for the boundary outline of the province of Manitoba, the provincial parks layer and the Aboriginal lands layer as follows:
+
+```{r}
+MB_outline <- st_read("GIS_MB/Manitoba_Provincial_Boundary.shp")
+MB_parks <-st_read("GIS_MB/Manitoba_Parks.shp")
+```
+
+```IndigenousLands <- st_read("Aboriginal_Lands.shp")```
+
+Create a map of the province of Manitoba boundary and the Indigenous lands layers using ggplot using the code snippet below:
+
+```
+ggplot() +
+  geom_sf(data = MB_outline) + 
+  geom_sf(data = IndigenousLands)
+```
+
+Notice that the Indigenous Lands layer is for all of Canada. To clip this to just include those within the province of Manitoba, execute this code:
+
+```
+MB_IndigenousLands <- IndigenousLands[MB_outline, ]
+```
+
+If you substitute the new layer "MB_IndigenousLands" in the ggplot code snippet you used above, you will only see the lands that are within the provincial boundaries of Manitoba, and your map should look like this: 
+
+```{r echo = FALSE} 
+MB_IndigenousLands <- st_read("GIS_MB/MB_IndigenousLands.shp")
+```
+
+
+```{r echo = FALSE}
+ggplot() +
+  geom_sf(data = MB_outline) + 
+  geom_sf(data = MB_IndigenousLands)
+```
+
+Now add in the layer for provincial parks
+
+```{r}
+ggplot() +
+  geom_sf(data = MB_outline) + 
+  geom_sf(data = MB_IndigenousLands) + 
+  geom_sf(data = MB_parks)
+```
+
+Now, try reading in and adding the layer for railways, using the code below:
+
+```{r error = FALSE}
+MB_rail <- st_read("GIS_MB/rail.shp")
+  
+ggplot() +
+  geom_sf(data = MB_outline) + 
+  geom_sf(data = MB_IndigenousLands) +
+  geom_sf(data = MB_parks) +
+  geom_sf(data = MB_rail)
+```
+
+Note that you get an error message that says something about a missing crs. "crs" stand for "co-ordinate reference system". This refers to how map data a projected to transform the round earth to a flat map. Read more about projections in the [ConservationGIS](https://nlboreal.github.io/ConservationGIS/projections.html) module.
+
+Verify that the MB_rail layer has no crs with the following code:
+
+```{r eval = FALSE}
+st_crs(MB_rail)
+```
+
+Now use the same ```st_crs``` function to check the CRS for the MB_parks layer. Notice the code right at the IDend of the output. It is 26914, which is the reference code for that file's projection (which is in NAD 83, UTM Zone 14N).
+
+To assign the existing projection system for MB_parks to the MB_rail layer, execute the following code:
+
+```{r}
+MB_rail <- st_set_crs(MB_rail, 26914)
+```
+
+Now try making the map with the provincial boundary, the Manitoba Indigenous lands layer and the rail layer.
+
+```{r echo = FALSE}
+ggplot() +
+  geom_sf(data = MB_outline) + 
+  geom_sf(data = MB_IndigenousLands) +
+  geom_sf(data = MB_parks) +
+  geom_sf(data = MB_rail)
+```
+
+This is starting to look like all the pieces are coming together, but it is hard to see the different features without some kind of colour coding or other symbology.
+
+Details on how to change symbols can be viewed with this command: 
+```vignette("ggplot2-specs")```
+
+An example to make the Indigenous lands yellow and the rail line a brown dashed line is below:
+
+```{r}
+ggplot() +
+  geom_sf(data = MB_outline) + 
+  geom_sf(data = MB_Indigenous_lands, fill = "yellow") + 
+  geom_sf(data = MB_parks, fill = "green") +
+  geom_sf(data = MB_rail, lty = "dashed", col = "brown")
+```
+
+Now, try reading in the following additional layers and symbolize them as listed. Your final map should look like the one below. 
+
+**NOTE** if you run into CRS error messages, simply go through the steps above to fix them.
+
+**NOTE** pay attention to the order in which you read things into ggplot, so that your final map matches the one below.
+
+Riding Mountain National Park - pink
+Roads layer - red
+Water layer - blue
+
+```{r echo = FALSE}
+#MB_water <- st_read("GIS_MB/water.shp")
+#MB_water <- st_set_crs(MB_water, 26914)
+
+#MB_roads <- st_read("GIS_MB/roads.shp")
+#MB_roads <- st_set_crs(MB_roads, 26914)
+
+#MB_RMNP <- st_read("GIS_MB/RMNP.shp")
+#MB_RMNP2 <- st_transform(MB_RMNP, 26914)
+
+ggplot() +
+  geom_sf(data = MB_outline) + 
+  geom_sf(data = MB_parks, fill = "green") + 
+  geom_sf(data = MB_rail, lty = "dashed", col = "brown") +
+  geom_sf(data = MB_water, col = "blue") +
+  geom_sf(data = MB_roads, col = "red") + 
+  geom_sf(data = MB_IndigenousLands, fill = "yellow") + 
+  geom_sf(data = MB_RMNP2, fill = "pink")
+```
+
+In the next chapter, we will explore how we can use the data underlying this map to do \@ref(AreaAnalysis).
+
+<!--chapter:end:03-MakingVectorMap.Rmd-->
+
+# Area Analysis (#AreaAnalysis)
+
+Spatial analysis is much more than making maps, so in this chapter we will investigate how to harness the data underlying these maps to answer some questions.
+
+Each shapefile has an associated attribute database file. You can see what the data look like by typing ```head(<datalayername>)```. This will give you the spatial reference data and the attribute data.
+
+**TRY IT!!** Type ```head(MB_Parks)``` and note the spatial referencing and attribute data. One of the headers is ```0_AREA```, which gives the area of the park in hectares. The RMNP has area data stored in the ```AnalysisAr``` field.
+
+We are going to calculate the total area of Manitoba that is set aside as protected, and compare this to the total area in Indigenous land. Then we will visualize these data with graphs.
+
+First, we add up the park area and the area of RMNP (we will exclude the other national park, Wapusk).
+
+```{r}
+total_park_area <- MB_RMNP$AnalysisAr + sum(MB_parks$O_AREA/100)
+```
+
+Note we divide the area of the parks by 100 since it is reported in hectares and we want square kilometers.
+
+The Indigenous land layer does not have an area field, so it has to be calculated based on the CRS (co-ordinate reference system) using the ```st_area``` function. Because the CRS is in UTMs, area will be in square metres. Thus we need to divide to get to areas in square km. Use the code below and note the use of the "pipes" (```%>%``` symbol) which require the ```dplyr``` package (you can review the ```dplyr``` pacakge in the lab manual for BIOL 1002, available [here(https://ahurford.github.io/biol-1002/index.html)]).
+
+```{r}
+MB_Indigenous_areas <- MB_IndigenousLands %>%
+  mutate(area_sqm = st_area(MB_IndigenousLands)) %>%
+  mutate(area_sqkm = area_sqm/1000000)
+```
+
+Now calculate the sum of the MB_Indigenous areas and assign that to an object called ```total_Indigenous_area```. Write your own line of code to do this (but you can look at how we summed the area of the parks for assistance)
+
+```{r echo = FALSE}
+total_Indigenous_area <- sum(MB_Indigenous_areas$area_sqkm)
+```
+
+In the previous chapter, we created a map showing parks and Indigenous areas. Now we will compare those data two other ways. Use the ```barchart``` function to write code to make a bar plot comparing the totals of each type of area, like the one shown below. 
+
+```{r echo = FALSE}
+total_areas <- cbind(total_Indigenous_area, total_park_area)
+area_types <- cbind("Indigenous areas", "Protected areas")
+
+barplot(total_areas, names = area_types, ylab = "total area (sq km)")
+
+```
+
+Then use the ```boxplot``` function to make a boxplot comparing the area data of the two (**HINT** note the log scale on the y-axis below)
+
+```{r echo = FALSE}
+boxplot(MB_Indigenous_areas$area_sqkm, MB_parks$O_AREA, log = "y", ylab = "area (sq km)", names = c("Indigenous areas", "Protected areas"))
+```
+
+**TIP** for help with barplots and boxplots, review Exercise 2 in the [BIOL1001 lab](https://ahurford.github.io/BIOL-1001/lab2.html#exercise-2.-bar-plots-and-boxplots-with-discrete-independent-variables), or in the console, tyep ```help(barplot)``` and ```help(boxplot)```
+
+
+
+
+
+
+<!--chapter:end:04-AreaAnalysis.Rmd-->
+

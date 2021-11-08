@@ -4,7 +4,7 @@ Review the Overview of [Types of GIS Data](https://nlboreal.github.io/Conservati
 
 In this part we will be working with Vector data from the Government of Manitoba. These are available via the [Manitoba Land Initiative](https://mli2.gov.mb.ca/). You should start by exploring this page. Click on the "Download digital maps" icon to review the [Licence Agreement](https://mli2.gov.mb.ca/app/register/app/index.php).
 
-1. Click on the Maniobal Land Initiative link above, and review the data license agreement. Once you agree, you will land on a page, with categories of data on the left. You will download the items listed below to your own folder. Download these to the same folder you will be working from in RStudio.
+1. Click on the Manitoba Land Initiative link above, and review the data license agreement. Once you agree, you will land on a page, with categories of data on the left. You will download the items listed below to your own folder. Download these to the same folder you will be working from in RStudio.
 
 **IMPORTANT** files will be downloaded as .zip files! You can extract these using Windows Explorer (on a PC) or WinZip software (if you have it). If you are using a Mac, double click the .zip file to unzip it. Make sure the unzipped files get extracted to your working folder!
 
