@@ -2,28 +2,28 @@
 
 We will use the R package ```sf``` for handling vector data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
 
-```{r}
+```{r results='hide', , warning = FALSE, error = FALSE}
 install.packages("sf", repos = "http://cran.us.r-projct.org")
 library(sf) 
 ```
 
 To plot the data (i.e., make a map) we will also need the package ```ggplot2```, so make sure to load and install that as well.
 
-```{r}
+```{r results='hide', , warning = FALSE }
 install.packages("ggplot2", repos = "http://cran.us.r-projct.org")
 library(ggplot2)
 ```
 
 
-Set your working directory to the spot where you downloaded the data in \@ref(Downloading). If you do not remember how to check, and set your working directory, review section [4.2](https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory).
+Set your working directory to the spot where you downloaded the data in the previous chapter \@ref(Downloading). If you do not remember how to check, and set your working directory, review section [4.2](https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory).
 
-```{r}
+```{r echo = FALSE}
 setwd("C:/Users/ywiersma/Documents/BIOL4651/MappingModule/ConservationMappingModule")
 ```
 
-Then read in the shapefile for the boundary outline of the province of Manitoba, the provincial parks layer and the Aboriginal lands layer as follows:
+Then read in the shapefile for the boundary outline of the province of Manitoba, the provincial parks layer and the Aboriginal lands layer as follows (note that you may have to change the file path and file names if you named them differently when you downloaded. In the text below, my GIS files are in a sub-folder named "GIS_MB"):
 
-```{r}
+```{r results='hide'}
 MB_outline <- st_read("GIS_MB/Manitoba_Provincial_Boundary.shp")
 MB_parks <-st_read("GIS_MB/Manitoba_Parks.shp")
 ```
@@ -46,7 +46,7 @@ MB_IndigenousLands <- IndigenousLands[MB_outline, ]
 
 If you substitute the new layer "MB_IndigenousLands" in the ggplot code snippet you used above, you will only see the lands that are within the provincial boundaries of Manitoba, and your map should look like this: 
 
-```{r echo = FALSE} 
+```{r echo = FALSE, results='hide'} 
 MB_IndigenousLands <- st_read("GIS_MB/MB_IndigenousLands.shp")
 ```
 
@@ -68,7 +68,7 @@ ggplot() +
 
 Now, try reading in and adding the layer for railways, using the code below:
 
-```{r error = FALSE}
+```{r eval = FALSE}
 MB_rail <- st_read("GIS_MB/rail.shp")
   
 ggplot() +
@@ -82,7 +82,11 @@ Note that you get an error message that says something about a missing crs. "crs
 
 Verify that the MB_rail layer has no crs with the following code:
 
-```{r eval = FALSE}
+```{r echo = FALSE, results = 'hide'}
+MB_rail <- st_read("GIS_MB/rail.shp")
+```
+
+```{r}
 st_crs(MB_rail)
 ```
 
@@ -106,15 +110,15 @@ ggplot() +
 
 This is starting to look like all the pieces are coming together, but it is hard to see the different features without some kind of colour coding or other symbology.
 
-Details on how to change symbols can be viewed with this command: 
-```vignette("ggplot2-specs")```
+Details on how to change symbols can be viewed by typing ```vignette("ggplot2-specs")``` at the prompt. 
+
 
 An example to make the Indigenous lands yellow and the rail line a brown dashed line is below:
 
 ```{r}
 ggplot() +
   geom_sf(data = MB_outline) + 
-  geom_sf(data = MB_Indigenous_lands, fill = "yellow") + 
+  geom_sf(data = MB_IndigenousLands, fill = "yellow") + 
   geom_sf(data = MB_parks, fill = "green") +
   geom_sf(data = MB_rail, lty = "dashed", col = "brown")
 ```
@@ -129,16 +133,18 @@ Riding Mountain National Park - pink
 Roads layer - red
 Water layer - blue
 
+```{r echo = FALSE, results='hide'}
+MB_water <- st_read("GIS_MB/water.shp")
+MB_water <- st_set_crs(MB_water, 26914)
+
+MB_roads <- st_read("GIS_MB/roads.shp")
+MB_roads <- st_set_crs(MB_roads, 26914)
+
+MB_RMNP <- st_read("GIS_MB/RMNP.shp")
+MB_RMNP2 <- st_transform(MB_RMNP, 26914)
+```
+
 ```{r echo = FALSE}
-#MB_water <- st_read("GIS_MB/water.shp")
-#MB_water <- st_set_crs(MB_water, 26914)
-
-#MB_roads <- st_read("GIS_MB/roads.shp")
-#MB_roads <- st_set_crs(MB_roads, 26914)
-
-#MB_RMNP <- st_read("GIS_MB/RMNP.shp")
-#MB_RMNP2 <- st_transform(MB_RMNP, 26914)
-
 ggplot() +
   geom_sf(data = MB_outline) + 
   geom_sf(data = MB_parks, fill = "green") + 
@@ -149,4 +155,4 @@ ggplot() +
   geom_sf(data = MB_RMNP2, fill = "pink")
 ```
 
-In the next chapter, we will explore how we can use the data underlying this map to do \@ref(AreaAnalysis).
+In the  chapter\@ref(AreaAnalysis), we will explore how we can use the data underlying this map to do an area analysis.

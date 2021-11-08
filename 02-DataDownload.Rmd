@@ -1,4 +1,4 @@
-#Downlaoding Data {#Downloading}
+# Downlaoding Data {#Downloading}
 
 Review the Overview of [Types of GIS Data](https://nlboreal.github.io/ConservationGIS/whatIs.html) from the Conservation GIS manual.
 
@@ -19,8 +19,11 @@ We will get the remaining layers we need via the ESRI Online interface.
 Search for and download each of these files: 
 
 [Manitoba Provincial Boundary](https://mun.maps.arcgis.com/home/item.html?id=ed39fb5989bc41bcb4b102f8ea899abf)
+
 [Manitoba Parks](https://mun.maps.arcgis.com/home/item.html?id=0b8e5b5280904fa4aeba7baf78154e59)
+
 [Aboriginal Land Types in Canada](https://mun.maps.arcgis.com/home/item.html?id=be58540e15a643eb95b440d70285703d)
+
 
 1. Finally, search within Memorial University for a shapefile called "RMNP", which was created by me. Download this file to the same folder as the other GIS layers.
 
