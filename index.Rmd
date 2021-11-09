@@ -1,6 +1,6 @@
 --- 
 title: "Mapping Module for Conservation Biology II (BIOL 4651/7944)"
-author: "Yolanda Wiersma"
+author: "Yolanda Wiersma, Memorial University"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook #bookdown::html_document2
