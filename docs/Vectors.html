@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Working with Vector Data | Mapping Module for Conservation Biology II (BIOL 4651/7944)</title>
+  <title>4 Working with Vector Data | Mapping Module for Conservation Biology II (BIOL 4651/7944)</title>
   <meta name="description" content="This is a set of instructions for a mapping module in the BIOL 4651/7944 Conservation in Practice Course" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Working with Vector Data | Mapping Module for Conservation Biology II (BIOL 4651/7944)" />
+  <meta property="og:title" content="4 Working with Vector Data | Mapping Module for Conservation Biology II (BIOL 4651/7944)" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Working with Vector Data | Mapping Module for Conservation Biology II (BIOL 4651/7944)" />
+  <meta name="twitter:title" content="4 Working with Vector Data | Mapping Module for Conservation Biology II (BIOL 4651/7944)" />
   
   <meta name="twitter:description" content="This is a set of instructions for a mapping module in the BIOL 4651/7944 Conservation in Practice Course" />
   
@@ -137,10 +137,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Conservation Mapping Module</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="Downloading.html"><a href="Downloading.html"><i class="fa fa-check"></i><b>2</b> Downlaoding Data</a></li>
-<li class="chapter" data-level="3" data-path="Vectors.html"><a href="Vectors.html"><i class="fa fa-check"></i><b>3</b> Working with Vector Data</a></li>
-<li class="chapter" data-level="4" data-path="AreaAnalysis.html"><a href="AreaAnalysis.html"><i class="fa fa-check"></i><b>4</b> Area Analysis</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> This is a manual for the “Mapping Module” in BIOL 4651/7704 (Conservation in Practice)</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="Downloading.html"><a href="Downloading.html"><i class="fa fa-check"></i><b>3</b> Downlaoding Data</a></li>
+<li class="chapter" data-level="4" data-path="Vectors.html"><a href="Vectors.html"><i class="fa fa-check"></i><b>4</b> Working with Vector Data</a></li>
+<li class="chapter" data-level="5" data-path="AreaAnalysis.html"><a href="AreaAnalysis.html"><i class="fa fa-check"></i><b>5</b> Area Analysis</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -161,8 +162,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Vectors" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Working with Vector Data</h1>
+<div id="Vectors" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Working with Vector Data</h1>
 <p>We will use the R package <code>sf</code> for handling vector data. You will have to download and install this package from the CRAN repository (review section <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages">4.10</a> of the MUN Biology R manual if need a reminder of how to do this).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="Vectors.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sf&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;http://cran.us.r-projct.org&quot;</span>)</span></code></pre></div>
 <pre><code>## Installing package into &#39;C:/Users/ywiersma/Documents/R/win-library/4.1&#39;
@@ -174,7 +175,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Installing package into &#39;C:/Users/ywiersma/Documents/R/win-library/4.1&#39;
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="Vectors.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-<p>Set your working directory to the spot where you downloaded the data in the previous chapter <a href="Downloading.html#Downloading">2</a>. If you do not remember how to check, and set your working directory, review section <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory">4.2</a>.</p>
+<p>Set your working directory to the spot where you downloaded the data in the previous chapter <a href="Downloading.html#Downloading">3</a>. If you do not remember how to check, and set your working directory, review section <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory">4.2</a>.</p>
 <p>Then read in the shapefile for the boundary outline of the province of Manitoba, the provincial parks layer and the Aboriginal lands layer as follows (note that you may have to change the file path and file names if you named them differently when you downloaded. In the text below, my GIS files are in a sub-folder named “GIS_MB”):</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="Vectors.html#cb8-1" aria-hidden="true" tabindex="-1"></a>MB_outline <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;GIS_MB/Manitoba_Provincial_Boundary.shp&quot;</span>)</span>
 <span id="cb8-2"><a href="Vectors.html#cb8-2" aria-hidden="true" tabindex="-1"></a>MB_parks <span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">&quot;GIS_MB/Manitoba_Parks.shp&quot;</span>)</span></code></pre></div>
@@ -226,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 Roads layer - red
 Water layer - blue</p>
 <p><img src="Conservation-Mapping-Module_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
-<p>In the chapter<a href="AreaAnalysis.html#AreaAnalysis">4</a>, we will explore how we can use the data underlying this map to do an area analysis.</p>
+<p>In the chapter<a href="AreaAnalysis.html#AreaAnalysis">5</a>, we will explore how we can use the data underlying this map to do an area analysis.</p>
 
 </div>
             </section>

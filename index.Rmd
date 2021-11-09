@@ -9,3 +9,7 @@ link-citations: false
 git-hub-repo: nlboreal/ConservationMappingModule
 description: "This is a set of instructions for a mapping module in the BIOL 4651/7944 Conservation in Practice Course"
 ---
+
+# This is a manual for the "Mapping Module" in BIOL 4651/7704 (Conservation in Practice)
+
+It will teach you to download and manipulate spatial data. 
