@@ -169,31 +169,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>TRY IT!!</strong> Type <code>head(MB_Parks)</code> and note the spatial referencing and attribute data. One of the headers is <code>0_AREA</code>, which gives the area of the park in hectares. The RMNP has area data stored in the <code>AnalysisAr</code> field.</p>
 <p>We are going to calculate the total area of Manitoba that is set aside as protected, and compare this to the total area in Indigenous land. Then we will visualize these data with graphs.</p>
 <p>First, we add up the park area and the area of RMNP (we will exclude the other national park, Wapusk).</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="AreaAnalysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a>total_park_area <span class="ot">&lt;-</span> MB_RMNP<span class="sc">$</span>AnalysisAr <span class="sc">+</span> <span class="fu">sum</span>(MB_parks<span class="sc">$</span>O_AREA<span class="sc">/</span><span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="AreaAnalysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a>total_park_area <span class="ot">&lt;-</span> MB_RMNP<span class="sc">$</span>AnalysisAr <span class="sc">+</span> <span class="fu">sum</span>(MB_parks<span class="sc">$</span>O_AREA<span class="sc">/</span><span class="dv">100</span>)</span></code></pre></div>
 <p>Note we divide the area of the parks by 100 since it is reported in hectares and we want square kilometers.</p>
 <p>The Indigenous land layer does not have an area field, so it has to be calculated based on the CRS (co-ordinate reference system) using the <code>st_area</code> function. Because the CRS is in UTMs, area will be in square metres. Thus we need to divide to get to areas in square km. Use the code below and note the use of the “pipes” (<code>%&gt;%</code> symbol) which require the <code>dplyr</code> package (you can review the <code>dplyr</code> pacakge in the lab manual for BIOL 1002, available [here(<a href="https://ahurford.github.io/biol-1002/index.html" class="uri">https://ahurford.github.io/biol-1002/index.html</a>)]).</p>
-<pre><code>## Installing package into &#39;C:/Users/ywiersma/Documents/R/win-library/4.1&#39;
-## (as &#39;lib&#39; is unspecified)</code></pre>
-<pre><code>## Warning: unable to access index for repository http://cran.us.r-projct.org/src/contrib:
-##   cannot open URL &#39;http://cran.us.r-projct.org/src/contrib/PACKAGES&#39;</code></pre>
-<pre><code>## Warning: package &#39;dplyr&#39; is not available for this version of R
-## 
-## A version of this package for your version of R might be available elsewhere,
-## see the ideas at
-## https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages</code></pre>
-<pre><code>## Warning: unable to access index for repository http://cran.us.r-projct.org/bin/windows/contrib/4.1:
-##   cannot open URL &#39;http://cran.us.r-projct.org/bin/windows/contrib/4.1/PACKAGES&#39;</code></pre>
-<pre><code>## 
-## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     filter, lag</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     intersect, setdiff, setequal, union</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="AreaAnalysis.html#cb25-1" aria-hidden="true" tabindex="-1"></a>MB_Indigenous_areas <span class="ot">&lt;-</span> MB_IndigenousLands <span class="sc">%&gt;%</span></span>
-<span id="cb25-2"><a href="AreaAnalysis.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">area_sqm =</span> <span class="fu">st_area</span>(MB_IndigenousLands)) <span class="sc">%&gt;%</span></span>
-<span id="cb25-3"><a href="AreaAnalysis.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">area_sqkm =</span> area_sqm<span class="sc">/</span><span class="dv">1000000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="AreaAnalysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a>MB_Indigenous_areas <span class="ot">&lt;-</span> MB_IndigenousLands <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="AreaAnalysis.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">area_sqm =</span> <span class="fu">st_area</span>(MB_IndigenousLands)) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="AreaAnalysis.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">area_sqkm =</span> area_sqm<span class="sc">/</span><span class="dv">1000000</span>)</span></code></pre></div>
 <p>Now calculate the sum of the MB_Indigenous areas and assign that to an object called <code>total_Indigenous_area</code>. Write your own line of code to do this (but you can look at how we summed the area of the parks for assistance)</p>
 <p>In the previous chapter, we created a map showing parks and Indigenous areas. Now we will compare those data two other ways. Use the <code>barchart</code> function to write code to make a bar plot comparing the totals of each type of area, like the one shown below.</p>
 <p><img src="Conservation-Mapping-Module_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>

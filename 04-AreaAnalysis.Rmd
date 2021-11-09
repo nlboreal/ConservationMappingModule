@@ -18,7 +18,7 @@ Note we divide the area of the parks by 100 since it is reported in hectares and
 
 The Indigenous land layer does not have an area field, so it has to be calculated based on the CRS (co-ordinate reference system) using the ```st_area``` function. Because the CRS is in UTMs, area will be in square metres. Thus we need to divide to get to areas in square km. Use the code below and note the use of the "pipes" (```%>%``` symbol) which require the ```dplyr``` package (you can review the ```dplyr``` pacakge in the lab manual for BIOL 1002, available [here(https://ahurford.github.io/biol-1002/index.html)]).
 
-```{r echo = FALSE, results ='hide'}
+```{r echo = FALSE, results ='hide', warning=FALSE, message=FALSE}
 install.packages("dplyr", repos = "http://cran.us.r-projct.org")
 library(dplyr)
 ```

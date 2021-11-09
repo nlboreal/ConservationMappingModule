@@ -12,4 +12,4 @@ description: "This is a set of instructions for a mapping module in the BIOL 465
 
 # This is a manual for the "Mapping Module" in BIOL 4651/7704 (Conservation in Practice)
 
-It will teach you to download and manipulate spatial data. 
+It will teach you to download and manipulate spatial data and is an updated exercise to the previous ones in the [ConservationGIS](https://nlboreal.github.io/ConservationGIS/) module that have been used in this course. 

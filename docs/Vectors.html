@@ -165,20 +165,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="Vectors" class="section level1" number="4">
 <h1><span class="header-section-number">4</span> Working with Vector Data</h1>
 <p>We will use the R package <code>sf</code> for handling vector data. You will have to download and install this package from the CRAN repository (review section <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages">4.10</a> of the MUN Biology R manual if need a reminder of how to do this).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="Vectors.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sf&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;http://cran.us.r-projct.org&quot;</span>)</span></code></pre></div>
-<pre><code>## Installing package into &#39;C:/Users/ywiersma/Documents/R/win-library/4.1&#39;
-## (as &#39;lib&#39; is unspecified)</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="Vectors.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) </span></code></pre></div>
-<pre><code>## Linking to GEOS 3.9.1, GDAL 3.2.1, PROJ 7.2.1</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="Vectors.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sf&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;http://cran.us.r-projct.org&quot;</span>)</span>
+<span id="cb1-2"><a href="Vectors.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) </span></code></pre></div>
 <p>To plot the data (i.e., make a map) we will also need the package <code>ggplot2</code>, so make sure to load and install that as well.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="Vectors.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;http://cran.us.r-projct.org&quot;</span>)</span></code></pre></div>
-<pre><code>## Installing package into &#39;C:/Users/ywiersma/Documents/R/win-library/4.1&#39;
-## (as &#39;lib&#39; is unspecified)</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="Vectors.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="Vectors.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>, <span class="at">repos =</span> <span class="st">&quot;http://cran.us.r-projct.org&quot;</span>)</span>
+<span id="cb2-2"><a href="Vectors.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
 <p>Set your working directory to the spot where you downloaded the data in the previous chapter <a href="Downloading.html#Downloading">3</a>. If you do not remember how to check, and set your working directory, review section <a href="https://ahurford.github.io/quant-guide-all-courses/rintro.html#working-directory">4.2</a>.</p>
 <p>Then read in the shapefile for the boundary outline of the province of Manitoba, the provincial parks layer and the Aboriginal lands layer as follows (note that you may have to change the file path and file names if you named them differently when you downloaded. In the text below, my GIS files are in a sub-folder named “GIS_MB”):</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="Vectors.html#cb8-1" aria-hidden="true" tabindex="-1"></a>MB_outline <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;GIS_MB/Manitoba_Provincial_Boundary.shp&quot;</span>)</span>
-<span id="cb8-2"><a href="Vectors.html#cb8-2" aria-hidden="true" tabindex="-1"></a>MB_parks <span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">&quot;GIS_MB/Manitoba_Parks.shp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="Vectors.html#cb3-1" aria-hidden="true" tabindex="-1"></a>MB_outline <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;GIS_MB/Manitoba_Provincial_Boundary.shp&quot;</span>)</span>
+<span id="cb3-2"><a href="Vectors.html#cb3-2" aria-hidden="true" tabindex="-1"></a>MB_parks <span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">&quot;GIS_MB/Manitoba_Parks.shp&quot;</span>)</span></code></pre></div>
 <p><code>IndigenousLands &lt;- st_read("Aboriginal_Lands.shp")</code></p>
 <p>Create a map of the province of Manitoba boundary and the Indigenous lands layers using ggplot using the code snippet below:</p>
 <pre><code>ggplot() +
@@ -189,36 +184,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you substitute the new layer “MB_IndigenousLands” in the ggplot code snippet you used above, you will only see the lands that are within the provincial boundaries of Manitoba, and your map should look like this:</p>
 <p><img src="Conservation-Mapping-Module_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Now add in the layer for provincial parks</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="Vectors.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb11-2"><a href="Vectors.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_outline) <span class="sc">+</span> </span>
-<span id="cb11-3"><a href="Vectors.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_IndigenousLands) <span class="sc">+</span> </span>
-<span id="cb11-4"><a href="Vectors.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_parks)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="Vectors.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb6-2"><a href="Vectors.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_outline) <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="Vectors.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_IndigenousLands) <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="Vectors.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_parks)</span></code></pre></div>
 <p><img src="Conservation-Mapping-Module_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Now, try reading in and adding the layer for railways, using the code below:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="Vectors.html#cb12-1" aria-hidden="true" tabindex="-1"></a>MB_rail <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;GIS_MB/rail.shp&quot;</span>)</span>
-<span id="cb12-2"><a href="Vectors.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb12-3"><a href="Vectors.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb12-4"><a href="Vectors.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_outline) <span class="sc">+</span> </span>
-<span id="cb12-5"><a href="Vectors.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_IndigenousLands) <span class="sc">+</span></span>
-<span id="cb12-6"><a href="Vectors.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_parks) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="Vectors.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_rail)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="Vectors.html#cb7-1" aria-hidden="true" tabindex="-1"></a>MB_rail <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">&quot;GIS_MB/rail.shp&quot;</span>)</span>
+<span id="cb7-2"><a href="Vectors.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-3"><a href="Vectors.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb7-4"><a href="Vectors.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_outline) <span class="sc">+</span> </span>
+<span id="cb7-5"><a href="Vectors.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_IndigenousLands) <span class="sc">+</span></span>
+<span id="cb7-6"><a href="Vectors.html#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_parks) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="Vectors.html#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_rail)</span></code></pre></div>
 <p>Note that you get an error message that says something about a missing crs. “crs” stand for “co-ordinate reference system”. This refers to how map data a projected to transform the round earth to a flat map. Read more about projections in the <a href="https://nlboreal.github.io/ConservationGIS/projections.html">ConservationGIS</a> module.</p>
 <p>Verify that the MB_rail layer has no crs with the following code:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="Vectors.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(MB_rail)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="Vectors.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">st_crs</span>(MB_rail)</span></code></pre></div>
 <pre><code>## Coordinate Reference System: NA</code></pre>
 <p>Now use the same <code>st_crs</code> function to check the CRS for the MB_parks layer. Notice the code right at the IDend of the output. It is 26914, which is the reference code for that file’s projection (which is in NAD 83, UTM Zone 14N).</p>
 <p>To assign the existing projection system for MB_parks to the MB_rail layer, execute the following code:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="Vectors.html#cb15-1" aria-hidden="true" tabindex="-1"></a>MB_rail <span class="ot">&lt;-</span> <span class="fu">st_set_crs</span>(MB_rail, <span class="dv">26914</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="Vectors.html#cb10-1" aria-hidden="true" tabindex="-1"></a>MB_rail <span class="ot">&lt;-</span> <span class="fu">st_set_crs</span>(MB_rail, <span class="dv">26914</span>)</span></code></pre></div>
 <p>Now try making the map with the provincial boundary, the Manitoba Indigenous lands layer and the rail layer.</p>
 <p><img src="Conservation-Mapping-Module_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>This is starting to look like all the pieces are coming together, but it is hard to see the different features without some kind of colour coding or other symbology.</p>
 <p>Details on how to change symbols can be viewed by typing <code>vignette("ggplot2-specs")</code> at the prompt.</p>
 <p>An example to make the Indigenous lands yellow and the rail line a brown dashed line is below:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="Vectors.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb16-2"><a href="Vectors.html#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_outline) <span class="sc">+</span> </span>
-<span id="cb16-3"><a href="Vectors.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_IndigenousLands, <span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb16-4"><a href="Vectors.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_parks, <span class="at">fill =</span> <span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
-<span id="cb16-5"><a href="Vectors.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_rail, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;brown&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="Vectors.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-2"><a href="Vectors.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_outline) <span class="sc">+</span> </span>
+<span id="cb11-3"><a href="Vectors.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_IndigenousLands, <span class="at">fill =</span> <span class="st">&quot;yellow&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="Vectors.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_parks, <span class="at">fill =</span> <span class="st">&quot;green&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="Vectors.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> MB_rail, <span class="at">lty =</span> <span class="st">&quot;dashed&quot;</span>, <span class="at">col =</span> <span class="st">&quot;brown&quot;</span>)</span></code></pre></div>
 <p><img src="Conservation-Mapping-Module_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Now, try reading in the following additional layers and symbolize them as listed. Your final map should look like the one below.</p>
 <p><strong>NOTE</strong> if you run into CRS error messages, simply go through the steps above to fix them.</p>
