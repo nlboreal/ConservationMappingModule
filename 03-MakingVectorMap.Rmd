@@ -1,5 +1,7 @@
 # Working with Vector Data {#Vectors}
 
+Demonstrate new idea...
+
 We will use the R package ```sf``` for handling vector data. You will have to download and install this package from the CRAN repository (review section [4.10](https://ahurford.github.io/quant-guide-all-courses/rintro.html#r-packages) of the MUN Biology R manual if need a reminder of how to do this).
 
 ```{r results='hide', warning = FALSE, message = FALSE}
