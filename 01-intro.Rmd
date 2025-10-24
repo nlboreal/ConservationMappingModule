@@ -1,6 +1,6 @@
 # Introduction {#intro}
 
-This is a module for the Winter 2022 offering of BIOL 4651/7794 (Conservation Biology- Conservation in Practice).
+This is a module to allow you to do basic mapping in R. It is applicable to work in Landscape Ecology and Conservation Biology..
 
 Further resources and hints for completing the exercise can be found in the Conservation GIS manual, available [here](https://nlboreal.github.io/ConservationGIS/).
 
